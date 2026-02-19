@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="header">
+        <h1>Notas Fiscais</h1>
+        <button mat-raised-button color="primary" (click)="openInvoiceFormModal()">
+            <mat-icon>add</mat-icon> Nova Nota Fiscal
+        </button>
+    </div>
+
+    <mat-card>
+        <table mat-table [dataSource]="invoices" class="mat-elevation-z0">
+
+            <!-- Number Column -->
+            <ng-container matColumnDef="number">
+                <th mat-header-cell *matHeaderCellDef> Número </th>
+                <td mat-cell *matCellDef="let invoice"> {{invoice.number}} </td>
+            </ng-container>
+
+            <!-- Status Column -->
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let invoice">
+                    <mat-chip-set>
+                        <mat-chip [color]="invoice.status === InvoiceStatus.Open ? 'primary' : 'warn'" highlighted>
+                            {{ invoice.status === InvoiceStatus.Open ? 'Aberta' : 'Fechada' }}
+                        </mat-chip>
+                    </mat-chip-set>
+                </td>
+            </ng-container>
+
+            <!-- CreatedAt Column -->
+            <ng-container matColumnDef="createdAt">
+                <th mat-header-cell *matHeaderCellDef> Data de Criação </th>
+                <td mat-cell *matCellDef="let invoice"> {{invoice.createdAt | date:'dd/MM/yyyy HH:mm'}} </td>
+            </ng-container>
+
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Ações </th>
+                <td mat-cell *matCellDef="let invoice">
+                    <div class="actions-column">
+                        <button mat-icon-button color="warn" (click)="deleteInvoice(invoice.id!)"
+                            *ngIf="invoice.status === InvoiceStatus.Open" matTooltip="Excluir nota fiscal">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-raised-button color="accent" class="print-button"
+                            (click)="printInvoice(invoice.id!)"
+                            [disabled]="invoice.status === InvoiceStatus.Closed || loadingPrint[invoice.id!]">
+                            <mat-icon class="print-icon" *ngIf="!loadingPrint[invoice.id!]">print</mat-icon>
+                            <mat-spinner *ngIf="loadingPrint[invoice.id!]" diameter="20"></mat-spinner>
+                            <span *ngIf="!loadingPrint[invoice.id!]"> Imprimir</span>
+                            <span *ngIf="loadingPrint[invoice.id!]"> Imprimindo...</span>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">Nenhuma nota fiscal encontrada</td>
+            </tr>
+        </table>
+    </mat-card>
+</div>

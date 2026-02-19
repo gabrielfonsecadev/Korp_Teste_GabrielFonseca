@@ -1,0 +1,52 @@
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-actions {
+  width: 150px;
+  text-align: right;
+}
+
+mat-spinner {
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.actions-column {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.print-button {
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+  .print-button {
+    width: 30px;
+  }
+
+  .print-icon {
+    display: none;
+  }
+
+  .actions-column {
+    gap: 2px;
+  }
+  .mdc-data-table__cell, .mdc-data-table__header-cell {
+    padding: 0 8px 0 8px;
+  }
+}

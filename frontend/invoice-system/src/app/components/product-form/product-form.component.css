@@ -1,0 +1,24 @@
+::ng-deep {
+  .mat-mdc-dialog-surface {
+    border-radius: 3px;
+    background-color: #26292c00;
+  }
+}
+
+.container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}

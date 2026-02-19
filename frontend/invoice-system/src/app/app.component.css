@@ -1,0 +1,35 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.active-link {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.content {
+  padding-top: 20px;
+}
+
+.main-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+@media (max-width: 600px) {
+  mat-toolbar {
+    height: auto;
+  }
+
+  .header {
+    flex-direction: column;
+    padding: 10px;
+  }
+}
