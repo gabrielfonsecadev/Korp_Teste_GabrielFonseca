@@ -1,0 +1,37 @@
+# --- General ---
+.DS_Store
+Thumbs.db
+*.log
+
+# --- VS Code ---
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# --- .NET / C# ---
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userprefs
+*.db
+*.db-shm
+*.db-wal
+
+# --- Angular / Node ---
+node_modules/
+dist/
+.angular/
+coverage/
+out-tsc/
+bazel-out/
+/frontend/invoice-system/.angular/cache
+/frontend/invoice-system/connect.lock
+/frontend/invoice-system/testem.log
+
+# --- Miscellaneous ---
+tmp/
+temp/

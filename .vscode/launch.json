@@ -1,0 +1,70 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "BillingService (https)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-billing",
+            "program": "${workspaceFolder}/backend/BillingService/bin/Debug/net8.0/BillingService.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/backend/BillingService",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger"
+            },
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}",
+                "pipeProgram": "powershell",
+                "pipeArgs": ["-Command"],
+                "debuggerPath": "C:/Users/Administrador/Downloads/netcoredbg-win64/netcoredbg/netcoredbg.exe",
+                "debuggerArgs": ["--interpreter=vscode"],
+                "quoteArgs": true
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:7001"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/backend/BillingService/Views"
+            }
+        },
+        {
+            "name": "StockService (https)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-stock",
+            "program": "${workspaceFolder}/backend/StockService/bin/Debug/net8.0/StockService.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/backend/StockService",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger"
+            },
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}",
+                "pipeProgram": "powershell",
+                "pipeArgs": ["-Command"],
+                "debuggerPath": "C:/Users/Administrador/Downloads/netcoredbg-win64/netcoredbg/netcoredbg.exe",
+                "debuggerArgs": ["--interpreter=vscode"],
+                "quoteArgs": true
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:7002"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/backend/StockService/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
